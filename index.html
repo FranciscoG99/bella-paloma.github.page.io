@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ff7417" />
+    <title>Bella Paloma | Gestión interna</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <div class="brand">
+          <!-- <span class="brand-icon" aria-hidden="true">✦</span> -->
+          <span class="user-avatar" aria-label="Uso personal">BP</span>
+          <div>
+            <strong>Bella Paloma</strong><span>GESTIÓN INTERNA</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section
+          id="home-view"
+          class="view active"
+          aria-labelledby="welcome-title"
+        >
+          <button class="scan-button" data-action="scan">
+            <span class="scan-icon" aria-hidden="true">▥</span
+            ><span
+              ><strong>Escanear producto</strong
+              ><small>Usá la cámara o ingresá el código</small></span
+            ><span aria-hidden="true">›</span>
+          </button>
+          <label class="search-box"
+            ><span aria-hidden="true">⌕</span
+            ><input
+              id="home-search"
+              type="search"
+              placeholder="Buscar por nombre o código..."
+              autocomplete="off"
+          /></label>
+          <h2 class="section-heading">Accesos rápidos</h2>
+          <div class="quick-grid">
+            <button class="quick-card" data-view="catalog">
+              <span class="quick-icon">▣</span><strong>Catálogo</strong
+              ><small>Consultar precios y stock</small>
+            </button>
+            <button class="quick-card" data-view="order">
+              <span class="quick-icon">☷</span><strong>Mi pedido</strong
+              ><small>Artículos por reponer</small>
+            </button>
+            <button class="quick-card" data-view="admin">
+              <span class="quick-icon">⚙</span><strong>Administrar</strong
+              ><small>Agregar y editar artículos</small>
+            </button>
+            <button class="quick-card" data-view="order">
+              <span class="quick-icon">⇩</span><strong>Completar pedido</strong
+              ><small>Descargar Excel / CSV</small>
+            </button>
+          </div>
+        </section>
+
+        <section id="catalog-view" class="view" aria-labelledby="catalog-title">
+          <div class="page-title">
+            <h1 id="catalog-title">Catálogo</h1>
+            <p>Buscá un producto y consultá sus precios.</p>
+          </div>
+          <label class="search-box"
+            ><span aria-hidden="true">⌕</span
+            ><input
+              id="catalog-search"
+              type="search"
+              placeholder="Nombre o código de barras..."
+              autocomplete="off"
+          /></label>
+          <div id="catalog-list" class="product-list"></div>
+        </section>
+
+        <section id="order-view" class="view" aria-labelledby="order-title">
+          <div class="page-title">
+            <h1 id="order-title">Mi pedido</h1>
+            <p>Productos que necesitás reponer.</p>
+          </div>
+          <div id="order-list" class="product-list"></div>
+          <div class="order-footer">
+            <div class="order-total">
+              <span>Total estimado mayorista</span
+              ><strong id="order-total">$ 0</strong>
+            </div>
+            <button id="export-button" class="primary-button">
+              Completar pedido · Descargar CSV</button
+            ><button id="clear-order" class="secondary-button">
+              Vaciar pedido
+            </button>
+          </div>
+        </section>
+
+        <section id="admin-view" class="view" aria-labelledby="admin-title">
+          <div class="page-title">
+            <h1 id="admin-title">Administrar productos</h1>
+            <p>Agregá o actualizá los artículos.</p>
+          </div>
+          <form id="product-form" class="form-card">
+            <input type="hidden" id="edit-original-code" />
+            <label
+              >Código de barras / interno<input
+                id="product-code"
+                required
+                placeholder="Ej. 7791234567890"
+            /></label>
+            <label
+              >Nombre del producto<input
+                id="product-name"
+                required
+                placeholder="Ej. Sartén 26 cm"
+            /></label>
+            <div class="form-row">
+              <label
+                >Precio mayorista ($)<input
+                  id="product-wholesale"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  required /></label
+              ><label
+                >Precio minorista ($)<input
+                  id="product-retail"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  required
+              /></label>
+            </div>
+            <label
+              >Stock actual (opcional)<input
+                id="product-stock"
+                type="number"
+                min="0"
+                step="1"
+                placeholder="Sin registrar"
+            /></label>
+            <button class="primary-button" type="submit" id="save-product">
+              Guardar producto
+            </button>
+            <button
+              class="secondary-button"
+              type="button"
+              id="cancel-edit"
+              hidden
+            >
+              Cancelar edición
+            </button>
+          </form>
+          <p class="hint">
+            Los productos de esta versión se guardan solo en este navegador. No
+            borres sus datos si querés conservarlos.
+          </p>
+        </section>
+
+        <section id="detail-view" class="view" aria-labelledby="detail-title">
+          <button class="back-button" data-view="catalog">
+            ‹ Volver al catálogo
+          </button>
+          <div id="detail-content"></div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Navegación principal">
+        <button data-view="home" class="nav-item active">
+          <span>⌂</span>Inicio
+        </button>
+        <button data-action="scan" class="nav-item">
+          <span>▥</span>Escanear
+        </button>
+        <button data-view="order" class="nav-item">
+          <span>☷</span>Mi pedido
+          <b id="order-count" class="count" hidden>0</b>
+        </button>
+        <button data-view="admin" class="nav-item"><span>☰</span>Administrar</button>
+      </nav>
+    </div>
+
+    <dialog id="scan-dialog" class="scan-dialog">
+      <div class="dialog-head">
+        <h2>Escanear producto</h2>
+        <button id="close-scan" class="icon-button" aria-label="Cerrar">
+          ✕
+        </button>
+      </div>
+      <p>Ingresá un código o probá la cámara.</p>
+      <input id="scan-code" placeholder="Código de barras" /><button
+        id="lookup-code"
+        class="primary-button"
+      >
+        Buscar código</button
+      ><button id="start-camera" class="secondary-button">
+        Abrir cámara (experimental)</button
+      ><video id="camera-preview" autoplay playsinline muted hidden></video>
+      <p id="scan-message" class="hint" role="status"></p>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

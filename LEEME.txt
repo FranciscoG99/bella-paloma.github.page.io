@@ -1,0 +1,19 @@
+BELLA PALOMA — WEB DE GESTIÓN (VERSIÓN INICIAL)
+
+1. Descomprimí la carpeta bella-paloma.
+2. Abrí la carpeta en Visual Studio Code.
+3. Abrí index.html en Chrome para probar la web en la computadora.
+4. Para modificar los colores, abrí styles.css y buscá la sección "1. COLORES Y VARIABLES".
+5. Para probar el escáner con la cámara desde un celular, publicá la web mediante HTTPS. La compatibilidad de BarcodeDetector varía entre navegadores.
+
+ARCHIVOS
+- index.html: estructura visual.
+- styles.css: estilos organizados por secciones.
+- app.js: búsqueda, catálogo, pedidos, almacenamiento y exportación CSV.
+
+IMPORTANTE
+- Esta es una versión de prueba, NO tiene inicio de sesión ni protección privada real.
+- Los productos y pedidos se guardan en localStorage del navegador; no se sincronizan entre dispositivos.
+- No cargues datos comerciales confidenciales hasta implementar autenticación y almacenamiento seguro.
+- El archivo exportado es CSV compatible con Excel, no un .xlsx nativo.
+- Los productos iniciales y sus precios son ficticios.

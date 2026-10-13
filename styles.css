@@ -1,0 +1,203 @@
+/* =====================================================
+   BELLA PALOMA — ESTILOS
+   Editá los colores principales en la sección 1.
+   ===================================================== */
+
+/* 1. COLORES Y VARIABLES */
+:root {
+  --orange: #ff7417;
+  --orange-dark: #e85c00;
+  --orange-light: #fff0e5;
+  --white: #ffffff;
+  --background: #f8f9fb;
+  --text: #17202d;
+  --muted: #687484;
+  --border: #e8eaee;
+  --radius: 18px;
+  --shadow: 0 4px 20px rgba(22, 30, 44, 0.04);
+}
+
+/* 2. ESTILOS GENERALES */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 3px solid #ffb880; outline-offset: 2px; }
+.app-shell {
+  max-width: 520px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--white);
+  padding-bottom: 7px;
+}
+main { padding: 0 22px 24px; }
+.view { display: none; }
+.view.active { display: block; }
+
+/* 3. ENCABEZADO Y MARCA */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 22px 20px;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-icon { color: var(--orange); font-size: 35px; }
+.brand strong { display: block; color: var(--orange); font-size: 25px; line-height: 1.1; }
+.brand span:last-child { display: block; color: var(--muted); font-size: 10px; letter-spacing: 3px; margin-top: 5px; }
+.user-avatar {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--orange-dark);
+  color: white;
+  font-weight: 600;
+}
+
+/* 4. INICIO */
+.welcome { margin: 16px 0 26px; }
+.welcome h1 { font-size: 34px; margin: 0 0 4px; letter-spacing: -1px; }
+.welcome p, .page-title p { margin: 0; color: var(--muted); line-height: 1.5; }
+.scan-button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 22px 18px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--orange);
+  color: var(--white);
+  text-align: left;
+}
+.scan-button .scan-icon { font-size: 34px; }
+.scan-button strong { display: block; font-size: 19px; }
+.scan-button small { display: block; font-size: 12px; margin-top: 5px; }
+.scan-button > span:last-child { margin-left: auto; font-size: 30px; }
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 0 16px;
+  margin: 18px 0 30px;
+  background: var(--white);
+}
+.search-box span { color: var(--muted); font-size: 28px; }
+.search-box input { width: 100%; height: 54px; border: none; outline: none; background: transparent; min-width: 0; }
+.section-heading { font-size: 18px; margin: 0 0 16px; }
+.quick-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+.quick-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 154px;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+.quick-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--orange-light); color: var(--orange); font-size: 24px; }
+.quick-card strong { margin-top: 6px; font-size: 14px; }
+.quick-card small { color: var(--muted); font-size: 12px; line-height: 1.35; }
+.home-footer { margin: 30px 0; color: var(--muted); text-align: center; font-size: 12px; }
+
+/* 5. CATÁLOGO Y DETALLE */
+.page-title { margin: 14px 0 22px; }
+.page-title h1 { margin: 0 0 5px; font-size: 27px; }
+.product-list { display: grid; gap: 12px; }
+.product-card, .detail-card, .form-card {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+.product-card h3 { margin: 0 0 5px; font-size: 16px; }
+.product-card p, .detail-card p { color: var(--muted); margin: 5px 0; font-size: 13px; }
+.product-prices { display: flex; justify-content: space-between; gap: 12px; margin: 14px 0; }
+.product-prices div { display: grid; gap: 4px; }
+.product-prices small { color: var(--muted); }
+.product-prices strong { font-size: 16px; }
+.card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.card-actions button { flex: 1; }
+.back-button { background: none; border: none; color: var(--orange-dark); padding: 8px 0 18px; }
+.detail-card h1 { font-size: 24px; margin: 0 0 8px; }
+.quantity-line { display: flex; gap: 10px; align-items: center; margin: 18px 0; }
+.quantity-line input { width: 90px; }
+
+/* 6. FORMULARIOS Y BOTONES */
+.form-card { display: grid; gap: 16px; }
+.form-card label { display: grid; gap: 7px; font-size: 13px; font-weight: 650; }
+.form-card input, .quantity-line input, .scan-dialog input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--white);
+  color: var(--text);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.primary-button, .secondary-button {
+  border-radius: 11px;
+  border: 1px solid var(--orange);
+  padding: 12px 14px;
+  font-weight: 650;
+}
+.primary-button { background: var(--orange); color: var(--white); }
+.secondary-button { background: var(--white); color: var(--orange-dark); }
+.primary-button:disabled { opacity: .5; cursor: not-allowed; }
+.hint { color: var(--muted); font-size: 12px; line-height: 1.5; }
+.empty-state { padding: 30px 18px; text-align: center; color: var(--muted); border: 1px dashed var(--border); border-radius: var(--radius); }
+.order-footer { display: grid; gap: 10px; margin-top: 20px; }
+.order-total { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; font-size: 13px; }
+.order-total strong { font-size: 18px; }
+
+/* 7. NAVEGACIÓN INFERIOR */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: min(100%, 520px);
+  padding: 10px 4px max(12px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+  background: var(--white);
+  z-index: 10;
+}
+.nav-item { position: relative; display: grid; justify-items: center; gap: 4px; border: none; background: none; color: var(--muted); font-size: 11px; }
+.nav-item span { font-size: 25px; }
+.nav-item.active { color: var(--orange-dark); font-weight: 700; }
+.count { position: absolute; top: 0; right: 14%; padding: 1px 5px; border-radius: 10px; background: var(--orange); color: white; font-size: 10px; }
+
+/* 8. VENTANA DE ESCANEO Y MENSAJES */
+.scan-dialog { width: min(92vw, 440px); border: none; border-radius: 20px; padding: 22px; box-shadow: 0 20px 80px #0003; }
+.scan-dialog::backdrop { background: #17202d99; }
+.dialog-head { display: flex; justify-content: space-between; align-items: center; }
+.dialog-head h2 { margin: 0; }
+.icon-button { border: none; background: none; font-size: 20px; }
+.scan-dialog input, .scan-dialog button:not(.icon-button) { margin-top: 12px; width: 100%; }
+#camera-preview { width: 100%; margin-top: 14px; border-radius: 12px; }
+.toast { position: fixed; bottom: 94px; left: 50%; transform: translateX(-50%); background: var(--text); color: white; padding: 12px 18px; border-radius: 12px; max-width: 90vw; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 20; }
+.toast.show { opacity: 1; }
+
+/* 9. AJUSTES PARA PANTALLAS PEQUEÑAS */
+@media (max-width: 360px) {
+  main { padding-inline: 15px; }
+  .site-header { padding-inline: 15px; }
+  .quick-card { padding: 12px; }
+  .brand strong { font-size: 22px; }
+}
